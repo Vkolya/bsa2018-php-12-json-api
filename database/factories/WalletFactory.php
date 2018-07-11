@@ -1,6 +1,7 @@
 <?php
 
 use Faker\Generator as Faker;
+use App\Entity\Wallet;
 use App\Entity\User;
 
 /*
@@ -14,9 +15,10 @@ use App\Entity\User;
 |
 */
 
-$factory->define(User::class, function (Faker $faker) {
+$factory->define(Wallet::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
-        'email' => $faker->safeEmail,
+        'user_id' => function () {
+            return factory(User::class)->create()->id;
+        },
     ];
 });

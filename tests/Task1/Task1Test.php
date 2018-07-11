@@ -120,11 +120,11 @@ class Task1Test extends TestCase
                 'black@gmail.com'
             )
         );
-
+        
         $this->userService->delete($user->id);
 
         $this->assertNull($this->userService->findById($user->id));
-
+        
         $wallet = $this->walletService->findByUser($user->id);
 
         $this->assertNull($wallet);

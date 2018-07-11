@@ -1,29 +1,26 @@
 <?php
 
-namespace App;
+namespace App\Entity;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
+use App\Entity\Wallet;
 
-class User extends Authenticatable
+class User extends Model
 {
-    use Notifiable;
-
     /**
-     * The attributes that are mass assignable.
+     * The table associated with the model.
      *
-     * @var array
+     * @var string
      */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
-
+    protected $table = 'user';
+    
+    public $timestamps = false;
     /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
+     * Get user's wallet
      */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    public function wallet()
+    {
+        return $this->hasOne(Wallet::class);
+    }
+
 }
