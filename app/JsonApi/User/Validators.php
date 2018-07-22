@@ -11,7 +11,7 @@ class Validators extends AbstractValidatorProvider
     /**
      * @var string
      */
-    protected $resourceType = 'users';
+    protected $resourceType = 'user';
 
     /**
      * Get the validation rules for the resource attributes.

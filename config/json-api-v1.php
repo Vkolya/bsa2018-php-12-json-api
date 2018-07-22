@@ -42,7 +42,9 @@ return [
     */
     'resources' => [
         'wallets' => \App\Entity\Wallet::class,
-        'user'  => App\Entity\User::class
+        'user'  => App\Entity\User::class,
+        'currency'  => \App\Entity\Currency::class,
+        'money' => App\Entity\Money::class
     ],
 
     /*

@@ -5,6 +5,7 @@ namespace App\Entity;
 use Illuminate\Database\Eloquent\Model;
 use App\Entity\User;
 use App\Entity\Money;
+use App\Entity\Currency;
 
 class Wallet extends Model
 {
@@ -28,5 +29,9 @@ class Wallet extends Model
     public function money()
     {
         return $this->hasMany(Money::class);
+    }
+    public function currency()
+    {
+        return $this->belongsToMany(Currency::class, 'money', 'wallet_id', 'currency_id');
     }
 }

@@ -21,7 +21,9 @@ class Adapter extends AbstractAdapter
      * @var array
      */
     protected $relationships = [
-        'user'
+        'user',
+        'currency',
+        'money'
     ];
     /**
      * @var array
@@ -46,6 +48,21 @@ class Adapter extends AbstractAdapter
     {
         return $this->belongsTo();
     }
+ 
+    /**
+     * @return BelongsTo
+     */
+    protected function currency()
+    {
+        return $this->hasMany();
+    }
+    /**
+     * @return BelongsTo
+     */
+    protected function money()
+    {
+        return $this->hasMany();
+    }
     
     /**
      * @inheritdoc
@@ -53,7 +70,7 @@ class Adapter extends AbstractAdapter
     protected function filter($query, Collection $filters)
     {
         if ($filters->has('deleted_at')) {
-            $query->where('wallet.deleted_at',$filters->get('deleted_at'));
+            $query->where('wallet.deleted_at',$filters->get('deleted_at') == '0' ? null : $filters->get('deleted_at'));
         }
     }
     

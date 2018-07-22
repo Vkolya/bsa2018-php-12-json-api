@@ -1,6 +1,6 @@
 <?php
 
-namespace App\JsonApi\User;
+namespace App\JsonApi\Money;
 
 use Neomerx\JsonApi\Schema\SchemaProvider;
 
@@ -10,7 +10,7 @@ class Schema extends SchemaProvider
     /**
      * @var string
      */
-    protected $resourceType = 'user';
+    protected $resourceType = 'money';
 
     /**
      * @param $resource
@@ -29,8 +29,8 @@ class Schema extends SchemaProvider
      */
     public function getAttributes($resource)
     {
-       return [
-             'email' => $resource->email,
+        return [
+             'amount' => $resource->amount,
         ];
     }
 }

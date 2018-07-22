@@ -14,12 +14,9 @@ use CloudCreativity\LaravelJsonApi\Facades\JsonApi;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 JsonApi::register('v1', ['namespace' => 'Api'], function ($api, $router) {
     $api->resource('wallets', [
-        'has-one' => 'user'
+        'has-one' => 'user',
+        'has-many' => ['currency','money']
     ]);
 });
