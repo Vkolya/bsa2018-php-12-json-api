@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use CloudCreativity\LaravelJsonApi\Facades\JsonApi;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +16,10 @@ use Illuminate\Http\Request;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+JsonApi::register('v1', ['namespace' => 'Api'], function ($api, $router) {
+    $api->resource('wallets', [
+        'has-one' => 'user'
+    ]);
 });

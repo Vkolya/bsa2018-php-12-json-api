@@ -11,6 +11,7 @@ use App\Services\WalletServiceInterface;
 use App\Services\WalletService;
 use App\Services\MoneyServiceInterface;
 use App\Services\MoneyService;
+use CloudCreativity\LaravelJsonApi\Facades\JsonApi;
 
 
 
@@ -23,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        JsonApi::defaultApi('v1');
     }
 
     /**
@@ -33,6 +34,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        
+       
         $this->app->bind(CurrencyServiceInterface::class,function () {
             return new CurrencyService();
         });
