@@ -36,8 +36,7 @@ class Validators extends AbstractValidatorProvider
     protected $allowedSortParameters = [
         'user_id',
         'deleted_at',
-        'money.currency_id'
-    ];
+     ];
     /**
      * Define the validation rules for the resource relationships.
      *
